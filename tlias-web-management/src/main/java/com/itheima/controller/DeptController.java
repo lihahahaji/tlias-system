@@ -14,6 +14,7 @@ import java.util.List;
  * 部门管理Controller
  */
 @RestController
+@RequestMapping("/depts")
 public class DeptController {
     private static final Logger log = LoggerFactory.getLogger(DeptController.class);
 
@@ -25,7 +26,7 @@ public class DeptController {
      * 查询部门数据
      * @return
      */
-    @GetMapping("/depts")
+    @GetMapping
     public Result list(){
         log.info("查询部门数据");
 
@@ -34,12 +35,11 @@ public class DeptController {
         return Result.success(deptList);
     }
 
-
     /**
      * 删除部门数据
      * @return
      */
-    @DeleteMapping("/depts/{id}")
+    @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id)
     {
         log.info("根据 id 来删除部门：{}",id);
@@ -48,7 +48,7 @@ public class DeptController {
         return Result.success();
     }
 
-    @PostMapping("/depts")
+    @PostMapping
     public Result add(@RequestBody  Dept dept)
     {
         log.info("新增部门：{}",dept);
@@ -56,6 +56,23 @@ public class DeptController {
         deptService.add(dept);
         return Result.success();
     }
+
+    @GetMapping("/{id}")
+    public Result find(@PathVariable Integer id){
+        log.info("查找 id 为 {} 的部门",id);
+
+        Dept dept = deptService.find(id);
+        return Result.success(dept);
+    }
+
+    @PutMapping
+    public Result update(@RequestBody Dept dept){
+
+        log.info("更新部门：{}",dept.getId());
+        deptService.update(dept);
+        return Result.success();
+    }
+
 
 
 }
