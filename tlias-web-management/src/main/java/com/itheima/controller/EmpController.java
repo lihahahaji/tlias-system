@@ -56,4 +56,13 @@ public class EmpController {
         return Result.success();
     }
 
+    @GetMapping("/{id}")
+    public Result findEmp(@PathVariable Integer id)
+    {
+        
+        return Result.success();
+
+    }
+
+
 }
