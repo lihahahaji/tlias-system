@@ -59,8 +59,9 @@ public class EmpController {
     @GetMapping("/{id}")
     public Result findEmp(@PathVariable Integer id)
     {
-        
-        return Result.success();
+        log.info("根据id来查询员工，id:{}",id);
+        Emp emp = empService.getById(id);
+        return Result.success(emp);
 
     }
 
