@@ -66,4 +66,13 @@ public class EmpController {
     }
 
 
+    @PutMapping
+    public Result updateEmp(@RequestBody Emp emp)
+    {
+        empService.update(emp);
+        return Result.success();
+    }
+
+
+
 }

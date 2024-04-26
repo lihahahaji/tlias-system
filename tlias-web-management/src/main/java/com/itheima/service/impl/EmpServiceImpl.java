@@ -53,5 +53,10 @@ public class EmpServiceImpl implements EmpService {
         return empMapper.getById(id);
     }
 
+    @Override
+    public void update(Emp emp) {
+        empMapper.update(emp);
+    }
+
 
 }
