@@ -33,6 +33,7 @@ public class LoginController {
             claims.put("name",e.getName());
 
             String jwt = JwtUtils.generateJwt(claims);
+            System.out.println("令牌生成："+jwt);
             return Result.success(jwt);
         }
         return Result.error("用户名或者密码错误");
