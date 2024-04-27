@@ -7,6 +7,7 @@ import com.itheima.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -61,6 +62,14 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public Emp login(Emp emp) {
         return empMapper.getByUsernameAndPassword(emp);
+    }
+
+
+    // 出现任何异常都回滚事务
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void deleteEmp(Emp emp) {
+
     }
 
 
