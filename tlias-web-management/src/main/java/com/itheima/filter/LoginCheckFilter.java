@@ -34,7 +34,7 @@ public class LoginCheckFilter implements Filter {
         }
 
         // 3. 获取请求中的令牌（token）
-        String jwt = request.getParameter("token");
+        String jwt = request.getHeader("token");
         System.out.println(jwt);
 
         // 4. 判断令牌是否存在，如果不存在，返回错误结果
